@@ -1,0 +1,21 @@
+{
+  "name": "rubenarakelyan/zomato-api-php",
+  "description": "PHP wrapper for the Zomato API.",
+  "authors": [
+    {
+      "name": "Ruben Arakelyan",
+      "email": "ruben@ra.me.uk",
+      "homepage": "http://ra.me.uk/"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "ZomatoApi\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "minimum-stability": "dev"
+}
