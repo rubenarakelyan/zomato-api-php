@@ -1,4 +1,4 @@
-<?php namespace ZomatoApi;
+<?php namespace RubenArakelyan\ZomatoApi;
 
 /**
  * Class ZomatoApiException
