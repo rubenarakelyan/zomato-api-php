@@ -4,6 +4,8 @@ PHP wrapper for the Zomato API.
 
 ## Usage
 
+    use RubenArakelyan\ZomatoApi;
+    
     // Include the API wrapper
     require_once 'src/ZomatoApi.php';
     
