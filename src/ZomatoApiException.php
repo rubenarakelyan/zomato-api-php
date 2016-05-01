@@ -2,6 +2,6 @@
 
 /**
  * Class ZomatoApiException
- * @package ZomatoApi
+ * @package RubenArakelyan\ZomatoApi
  */
 class ZomatoApiException extends \Exception {}

@@ -1,26 +1,14 @@
-<?php namespace RubenArakelyan\ZomatoApi;
-
-// **********************************************************************
-// Zomato API PHP wrapper
-// Version 1.0
-// Author: Ruben Arakelyan <ruben@ra.me.uk>
-//
-// Copyright (C) 2015 Ruben Arakelyan.
-// This file is licensed under the MIT licence.
-//
-// For more information, see https://github.com/rubenarakelyan/zomato-api-php
-// **********************************************************************
+<?php
+namespace RubenArakelyan\ZomatoApi;
 
 /**
  * Class ZomatoApiRequest
- * @package ZomatoApi
+ * @package RubenArakelyan\ZomatoApi
  */
 class ZomatoApiRequest
 {
-    // API URL
+
     private $url = 'https://developers.zomato.com/api/v2.1/';
-    
-    // Chosen function, arguments and API key
     private $func;
     private $args;
     
@@ -36,8 +24,7 @@ class ZomatoApiRequest
         $this->url = $this->_get_uri_for_function($this->func);
         
         // Check to see if valid URL has been set
-        if (!isset($this->url) || $this->url == '')
-        {
+        if (!isset($this->url) || $this->url == '') {
             throw new ZomatoApiException('Invalid function: ' . $this->func . '. Please look at the documentation for supported functions.');
         }
     }
@@ -46,17 +33,17 @@ class ZomatoApiRequest
     public function encode_arguments()
     {
         // Make sure all mandatory arguments for a particular function are present
-        if (!$this->_validate_arguments($this->func, $this->args))
-        {
+        if (!$this->_validate_arguments($this->func, $this->args)) {
             throw new ZomatoApiException('All mandatory arguments for ' . $this->func . ' not provided.');
         }
         
         // Assemble the URL
         $full_url = $this->url . '?key=' . $this->api_key . '&';
-        foreach ($this->args as $name => $value)
-        {
+        
+        foreach ($this->args as $name => $value) {
             $full_url .= $name . '=' . urlencode($value) . '&';
         }
+        
         $full_url = substr($full_url, 0, -1);
         
         return $full_url;
@@ -66,8 +53,7 @@ class ZomatoApiRequest
     private function _get_uri_for_function($func)
     {
         // Exit if any arguments are not defined
-        if (!isset($func) || $func == '')
-        {
+        if (!isset($func) || $func == '') {
             return '';
         }
         
@@ -87,12 +73,9 @@ class ZomatoApiRequest
         ];
         
         // If the function exists, return its URL
-        if (array_key_exists($func, $valid_functions))
-        {
+        if (array_key_exists($func, $valid_functions)) {
             return $this->url . $func;
-        }
-        else
-        {
+        } else {
             return '';
         }
     }
@@ -117,10 +100,9 @@ class ZomatoApiRequest
         
         // Check to see if all mandatory arguments are present
         $required_params = $functions_params[$func];
-        foreach ($required_params as $param)
-        {
-            if (!isset($args[$param]))
-            {
+        
+        foreach ($required_params as $param) {
+            if (!isset($args[$param])) {
                 return false;
             }
         }
@@ -128,5 +110,3 @@ class ZomatoApiRequest
         return true;
     }
 }
-
-?>
